@@ -10,6 +10,7 @@ namespace ProbandoMap
     public class Marcador
     {
         public int x, y;
+        public double lat, lng;
         public Color color;
         public Marcador(Color color)
         {

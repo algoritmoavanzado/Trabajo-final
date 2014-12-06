@@ -23,6 +23,7 @@ namespace ProbandoMap
             double radius = GeoCodeCalc.EarthRadiusInMiles;
 
             if (m == GeoCodeCalcMeasurement.Kilometers) { radius = GeoCodeCalc.EarthRadiusInKilometers; }
+            else if (m == GeoCodeCalcMeasurement.Meters) { radius = GeoCodeCalc.EarthRadiusInKilometers*1000; }
             return radius * 2 * Math.Asin(Math.Min(1, Math.Sqrt((Math.Pow(Math.Sin((DiffRadian(lat1, lat2)) / 2.0), 2.0) + Math.Cos(ToRadian(lat1)) * Math.Cos(ToRadian(lat2)) * Math.Pow(Math.Sin((DiffRadian(lng1, lng2)) / 2.0), 2.0)))));
         }
     }
@@ -30,6 +31,7 @@ namespace ProbandoMap
     public enum GeoCodeCalcMeasurement : int
     {
         Miles = 0,
-        Kilometers = 1
+        Kilometers = 1,
+        Meters = 2
     }
 }

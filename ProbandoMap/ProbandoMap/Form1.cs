@@ -27,8 +27,8 @@ namespace ProbandoMap
         //ORDENADAS DEL PANEL CON RESPECTO A LA IMAGEN MAPEADA 
         public int XPanel, YPanel;
         //MARCADOR
-        public Marcador marcadorOrigen,marcadorDestino;
-        public int nodoOrigen, nodoDestino;
+        
+        
 
         public List<List<Tuple<double, double>>> matrizCoord;
 
@@ -71,9 +71,8 @@ namespace ProbandoMap
             Actualizar();
             
             //MARCADOR
-            marcadorOrigen = new Marcador(Color.Green);
-            marcadorDestino = new Marcador(Color.Blue);
-            nodoOrigen = nodoDestino = -1;
+            
+            
 
            
 
@@ -147,10 +146,11 @@ namespace ProbandoMap
             buffer.Graphics.Clear(Color.White);
             buffer.Graphics.DrawImage(pictureBox1.Image,XReal,YReal,Wreal,Hreal);
 
-            controlador.DibujarMatriz(buffer.Graphics,XReal,YReal);
-            controlador.DibujarPath(buffer.Graphics);
-            marcadorOrigen.Dibujar(buffer.Graphics);
-            marcadorDestino.Dibujar(buffer.Graphics);
+            //controlador.DibujarMatriz(buffer.Graphics,XReal,YReal);
+            //controlador.DibujarPath(buffer.Graphics);
+            //controlador.DibujarParaderos(buffer.Graphics);
+
+            controlador.dibujaLinea(buffer.Graphics);
 
              buffer.Render(gr);
              gr.Dispose();
@@ -160,7 +160,7 @@ namespace ProbandoMap
 
         private void panel2_Click(object sender, EventArgs e)
         {
-            
+            //controlador.agregarParadero(
         }
 
         private bool verificarMargenes()
@@ -328,47 +328,44 @@ namespace ProbandoMap
             Tuple<double, double> par = new Tuple<double, double>(LatitudSup-operadorLat,LongitudSup+operadorLong);//(LATITUD,LONGITUD)
 
             return par;
-        }
+       } 
 
         private void panel2_MouseClick(object sender, MouseEventArgs e)
         {
             
-            Tuple<double, double> coord = obtenerLatitudLong(e.X, e.Y);
+            //Tuple<double, double> coord = obtenerLatitudLong(e.X, e.Y);
 
-            txtLat.Text = coord.Item1 + "";
-            txtLong.Text = coord.Item2 + "";
-            //MessageBox.Show("LatFinal = " + coord.Item1+"\nLongFinal = "+coord.Item2);
+            //txtLat.Text = coord.Item1 + "";
+            //txtLong.Text = coord.Item2 + "";
+            ////MessageBox.Show("LatFinal = " + coord.Item1+"\nLongFinal = "+coord.Item2);
 
-            Tuple<int, int,int,int> clickeado = controlador.ObtenerIndiceAprox(e.X, e.Y);
-            if (rbNodoOrigen.Checked)
-            {
+            //Tuple<int, int> clickeado = new Tuple<int, int>(e.X, e.Y);
+            //if (rbNodoOrigen.Checked)
+            //{
+            //    controlador.setearPunto(0, e.X,e.Y);           
+            //}
+            //else if (rbNodoDestino.Checked)
+            //{
+            //    controlador.setearPunto(1, e.X,e.Y);
+            //}
 
-                marcadorOrigen.x = clickeado.Item1;
-                marcadorOrigen.y = clickeado.Item2;
-                nodoOrigen = clickeado.Item4 * controlador.col + clickeado.Item3; //X = j , Y=i
-                
 
-            }
-            else if (rbNodoDestino.Checked)
-            {
-                marcadorDestino.x = clickeado.Item1;
-                marcadorDestino.y = clickeado.Item2;
-                nodoDestino = clickeado.Item4 * controlador.col + clickeado.Item3;
-            }
 
-            controlador.LimpiarPath();
+
+            //controlador.LimpiarPath();
+
+            controlador.agregarParadero(e.X, e.Y,this,this.panel2);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            controlador.GenerarPuntos((int)this.panel2.Width+25*70, (int)this.panel2.Height+25*70);
-            CargarData();
+            //controlador.GenerarPuntos((int)this.panel2.Width+25*70, (int)this.panel2.Height+25*70);
+            //CargarData();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (nodoDestino == -1 || nodoOrigen == -1)
-                return;
             //Tuple<List<int>,int> result=controlador.Dijkstra(nodoOrigen, nodoDestino);
            
             //String resultado = "Pasos:\n";
@@ -378,7 +375,7 @@ namespace ProbandoMap
             //    resultado += result.Item1[i] + ",";
             //}
             //resultado += "\nDistancia corta: " + result.Item2;
-            controlador.Dijkstra(nodoOrigen, nodoDestino);
+            controlador.hallaCamino();
 
             //MessageBox.Show(resultado);
 
@@ -434,6 +431,18 @@ namespace ProbandoMap
             tw.Close();
 
 
+        }
+
+        //Click en Trazar ruta
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Click en agregar ruta
+        private void button4_Click(object sender, EventArgs e)
+        {
+            controlador.LimpiarPath();
         }
 
 

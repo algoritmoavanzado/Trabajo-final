@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arista.cs" />
     <Compile Include="GeoCodeCalc.cs" />
     <Compile Include="Controlador.cs" />
     <Compile Include="Form1.cs">
@@ -64,6 +65,9 @@
     <Compile Include="Marcador.cs" />
     <Compile Include="MinHeap.cs" />
     <Compile Include="Nodo.cs" />
+    <Compile Include="ParaderoButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

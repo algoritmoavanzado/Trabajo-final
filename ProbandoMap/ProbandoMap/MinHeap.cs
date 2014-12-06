@@ -7,24 +7,24 @@ namespace ProbandoMap
 {
     class MinHeap
     {
-        private List<Nodo> array = new List<Nodo>();
+        private List<Arista> array = new List<Arista>();
 
-        public void Add(Nodo element)
+        public void Add(Arista element)
         {
             array.Add(element);
             int c = array.Count - 1;
-            while (c > 0 && array[c].Peso.CompareTo(array[c / 2].Peso) == -1)
+            while (c > 0 && array[c].peso.CompareTo(array[c / 2].peso) == -1)
             {
-                Nodo tmp = array[c];
+                Arista tmp = array[c];
                 array[c] = array[c / 2];
                 array[c / 2] = tmp;
                 c = c / 2;
             }
         }
 
-        public Nodo RemoveMin()
+        public Arista RemoveMin()
         {
-            Nodo ret = array[0];
+            Arista ret = array[0];
             array[0] = array[array.Count - 1];
             array.RemoveAt(array.Count - 1);
 
@@ -32,16 +32,16 @@ namespace ProbandoMap
             while (c < array.Count)
             {
                 int min = c;
-                if (2 * c + 1 < array.Count && array[2 * c + 1].Peso.CompareTo(array[min].Peso) == -1)
+                if (2 * c + 1 < array.Count && array[2 * c + 1].peso.CompareTo(array[min].peso) == -1)
                     min = 2 * c + 1;
-                if (2 * c + 2 < array.Count && array[2 * c + 2].Peso.CompareTo(array[min].Peso) == -1)
+                if (2 * c + 2 < array.Count && array[2 * c + 2].peso.CompareTo(array[min].peso) == -1)
                     min = 2 * c + 2;
 
                 if (min == c)
                     break;
                 else
                 {
-                    Nodo tmp = array[c];
+                    Arista tmp = array[c];
                     array[c] = array[min];
                     array[min] = tmp;
                     c = min;
@@ -51,7 +51,7 @@ namespace ProbandoMap
             return ret;
         }
 
-        public Nodo Peek()
+        public Arista Peek()
         {
             return array[0];
         }
@@ -79,17 +79,17 @@ namespace ProbandoMap
 
         private MinHeap minHeap = new MinHeap();
 
-        public void Add(Nodo element)
+        public void Add(Arista element)
         {
             minHeap.Add(element);
         }
 
-        public Nodo RemoveMin()
+        public Arista RemoveMin()
         {
             return minHeap.RemoveMin();
         }
 
-        public Nodo Peek()
+        public Arista Peek()
         {
             return minHeap.Peek();
         }

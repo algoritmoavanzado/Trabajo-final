@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rbNodoDestino = new System.Windows.Forms.RadioButton();
             this.rbNodoOrigen = new System.Windows.Forms.RadioButton();
@@ -48,7 +49,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,6 +58,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.rbNodoDestino);
@@ -77,9 +81,19 @@
             this.panel1.Size = new System.Drawing.Size(200, 611);
             this.panel1.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(53, 534);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Guardar Matriz";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(53, 469);
+            this.button1.Location = new System.Drawing.Point(53, 412);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -90,7 +104,7 @@
             // rbNodoDestino
             // 
             this.rbNodoDestino.AutoSize = true;
-            this.rbNodoDestino.Location = new System.Drawing.Point(53, 421);
+            this.rbNodoDestino.Location = new System.Drawing.Point(53, 364);
             this.rbNodoDestino.Name = "rbNodoDestino";
             this.rbNodoDestino.Size = new System.Drawing.Size(90, 17);
             this.rbNodoDestino.TabIndex = 12;
@@ -102,7 +116,7 @@
             // rbNodoOrigen
             // 
             this.rbNodoOrigen.AutoSize = true;
-            this.rbNodoOrigen.Location = new System.Drawing.Point(53, 365);
+            this.rbNodoOrigen.Location = new System.Drawing.Point(53, 326);
             this.rbNodoOrigen.Name = "rbNodoOrigen";
             this.rbNodoOrigen.Size = new System.Drawing.Size(85, 17);
             this.rbNodoOrigen.TabIndex = 11;
@@ -241,15 +255,25 @@
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button2
+            // button3
             // 
-            this.button2.Location = new System.Drawing.Point(53, 518);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Guardar Matriz";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button3.Location = new System.Drawing.Point(53, 454);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Trazar ruta";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(53, 495);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 16;
+            this.button4.Text = "Agregar ruta";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -293,6 +317,8 @@
         private System.Windows.Forms.RadioButton rbNodoOrigen;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
     }
 }
 
